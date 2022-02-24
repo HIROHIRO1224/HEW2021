@@ -60,7 +60,7 @@ class DBA
      * @return array 実行結果が格納された変数
      */
 
-    public function SELECT(string $table, array|int $columnsName, int $mode, string $condition = null, array $params = null)
+    public function SELECT(string $table, $columnsName, int $mode, string $condition = null, array $params = null)
     {
         // 変数の初期化
         $sql = '';

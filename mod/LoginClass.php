@@ -16,7 +16,7 @@ class LoginClass
     {
         try {
 
-            $dba = new DBA("root", "secret", "HEW", "db");
+            $dba = new DBA("root", "", "HEW", "localhost");
 
             $params = [$user, $user];
             $condition = "user_name=? or user_email=?;";
@@ -46,7 +46,7 @@ class LoginClass
     {
         # code...
         try {
-            $dba = new DBA("root", "secret", "HEW", "db");
+            $dba = new DBA("root", "", "HEW", "localhost");
 
             $params = ["user_name" => $name, "user_tname" => $truename, "user_pwd" => $pwd, "user_email" => $mailAddress];
 

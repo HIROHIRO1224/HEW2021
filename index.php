@@ -25,7 +25,7 @@ try {
 	} elseif (isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()) {
 		# code...
 		$_SESSION['time'] = time();
-		$dba = new DBA('root', 'secret', 'HEW', 'db');
+		$dba = new DBA('root', '', 'HEW', 'localhost');
 		$condition = 'user_id = ?;';
 		$params = [$_SESSION['user_id']];
 		$columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
@@ -77,7 +77,7 @@ try {
 			</a>
 			<div class=" user-panel">
 				<?php if ($user != 'guest') : ?>
-					<a href="./mypage.php"><? echo h($user["user_name"]) ?></a>
+					<a href="./mypage.php"><?php echo h($user["user_name"]) ?></a>
 				<?php else : ?>
 					<a href="./login/index.php">ログイン/登録</a>
 				<?php endif; ?>

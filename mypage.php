@@ -25,7 +25,7 @@ try {
     } elseif (isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()) {
         # code...
         $_SESSION['time'] = time();
-        $dba = new DBA('root', 'secret', 'HEW', 'db');
+        $dba = new DBA('root', '', 'HEW', 'localhost');
         $condition = 'user_id = ?;';
         $params = [$_SESSION['user_id']];
         $columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
