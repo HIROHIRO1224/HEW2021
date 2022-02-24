@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <rect width="1920" height="1080" fill="#fff"/>
+    <path id="多角形_1" data-name="多角形 1" d="M525,0,700,298.9l-175,298.9H175L0,298.9,175,0Z" transform="translate(779.339 126.149) rotate(30)" fill="#8d8d8d" stroke="#fff" stroke-width="100"/>
+    <line id="線_3" data-name="線 3" x2="400" transform="translate(586.795 760) rotate(30)" fill="none" stroke="#0e8e30" stroke-linecap="round" stroke-width="75"/>
+    <line id="線_12" data-name="線 12" x2="300" transform="translate(1192.808 410) rotate(150)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="50"/>
+    <line id="線_4" data-name="線 4" x2="400" transform="translate(1279.615 760) rotate(150)" fill="none" stroke="#28793e" stroke-linecap="round" stroke-width="75"/>
+    <line id="線_17" data-name="線 17" x2="300" transform="translate(673.192 410) rotate(30)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="50"/>
+    <line id="線_10" data-name="線 10" x2="400" transform="translate(933.205 160) rotate(30)" fill="none" stroke="#00cb37" stroke-linecap="round" stroke-width="75"/>
+    <line id="線_11" data-name="線 11" x2="400" transform="translate(933.205 160) rotate(150)" fill="none" stroke="#00cb37" stroke-linecap="round" stroke-width="75"/>
+    <line id="線_9" data-name="線 9" x2="400" transform="translate(586.795 360) rotate(90)" fill="none" stroke="#0e8e30" stroke-linecap="round" stroke-width="75"/>
+    <line id="線_15" data-name="線 15" x2="200" transform="translate(1279.41 760) rotate(-150)" fill="none" stroke="#28793e" stroke-linecap="round" stroke-width="75"/>
+  </g>
+</svg>
