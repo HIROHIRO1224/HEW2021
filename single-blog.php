@@ -41,7 +41,7 @@ try {
 
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ja">
 
 <head>
 	<title>Game Warrior Template</title>

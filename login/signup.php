@@ -12,7 +12,7 @@ if (!empty($_POST)) {
 
     try {
         //code...
-        $dba = new DBA("root", "secret", "HEW", "db");
+        $dba = new DBA("root", "", "HEW", "localhost");
         $params = [$_POST["username"]];
         $condition = "user_name=?";
         $column = $dba->SELECT("t_users", DBA::ALL, DBA::NUMVALUE, $condition, $params);
