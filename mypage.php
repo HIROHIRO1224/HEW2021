@@ -53,6 +53,14 @@ try {
 <body>
     <a href="./cart.php">カート</a>
     <a href="./login/logout.php">ログアウト</a>
+
+    <p>購入済み</p>
+
+    <ul>
+        <li>
+            <a href="./WebTETRIS/">TETRIS</a>
+        </li>
+    </ul>
 </body>
 
 </html>
