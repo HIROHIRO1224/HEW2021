@@ -1,3 +1,45 @@
+<?php
+
+
+session_start();
+
+include_once './mod/DBA.php';
+include_once './mod/LoginClass.php';
+include_once './mod/module.php';
+
+$user = 'guest';
+
+try {
+	//code...
+	if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_data'])) {
+		# code...
+		$loginclass = new LoginClass();
+		$result = $loginclass->login($_COOKIE['user_data'], $_COOKIE['password']);
+
+		if ($result != false) {
+			# code...
+			$_SESSION['user_id'] = $result['user_id'];
+			$_SESSION['time'] = time();
+			setcookie('user_data', $_POST['user_data'], time() + 60 * 60 * 24 * 30);
+			setcookie('password', $_POST['password'], time() + 60 * 60 * 24 * 30);
+		}
+	} elseif (isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()) {
+		# code...
+		$_SESSION['time'] = time();
+		$dba = new DBA('root', '', 'HEW', 'localhost');
+		$condition = 'user_id = ?;';
+		$params = [$_SESSION['user_id']];
+		$columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
+		$user = $columns[0];
+	}
+} catch (PDOException $e) {
+	throw $e->getMessage();
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -33,12 +75,11 @@
 	<header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a class="site-logo navbar-brand pl-1" href="index.html"
-				style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;">
+			<a class="site-logo navbar-brand pl-1" href="index.html" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;">
 				<div class="ml-5" style="color: whitesmoke;">Playground</div>
 			</a>
 			<div class="user-panel">
-				<a href="#">ログイン</a> / <a href="#">登録</a>
+				<a href="./login/">ログイン/登録</a>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -47,11 +88,11 @@
 			<!-- site menu -->
 			<nav class="main-menu">
 				<ul>
-					<li><a href="index.html">ホーム</a></li>
-					<li><a href="review.html">ゲーム</a></li>
-					<li><a href="categories.html">ブログ</a></li>
-					<li><a href="community.html">フォーラム</a></li>
-					<li><a href="contact.html">コンタクト</a></li>
+					<li><a href="index.php">ホーム</a></li>
+					<li><a href="review.php">ゲーム</a></li>
+					<li><a href="categories.php">ブログ</a></li>
+					<li><a href="community.php">フォーラム</a></li>
+					<li><a href="contact.php">コンタクト</a></li>
 				</ul>
 			</nav>
 		</div>

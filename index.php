@@ -89,11 +89,11 @@ try {
 			<!-- site menu -->
 			<nav class="main-menu">
 				<ul>
-					<li><a href="index.html">ホーム</a></li>
-					<li><a href="review.html">ゲーム</a></li>
-					<li><a href="categories.html">ブログ</a></li>
-					<li><a href="community.html">フォーラム</a></li>
-					<li><a href="contact.html">コンタクト</a></li>
+					<li><a href="index.php">ホーム</a></li>
+					<li><a href="review.php">ゲーム</a></li>
+					<li><a href="categories.php">ブログ</a></li>
+					<li><a href="community.php">フォーラム</a></li>
+					<li><a href="contact.php">コンタクト</a></li>
 				</ul>
 			</nav>
 		</div>
