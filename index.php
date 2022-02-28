@@ -67,44 +67,54 @@ try {
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
-	<!-- Header section -->
-	<header class="header-section">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
-			<!-- logo -->
-			<a class="site-logo navbar-brand pl-1" href="index.html" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;">
-				<div class="ml-5" style="color: whitesmoke;">Playground</div>
+			<a href="./" class="navbar-brand">
+				<!-- <a class="navbar-brand pl-1" href="#" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;"> -->
+				<img src="./img/Logo.png" width="28" height="30" class="d-inline-block align-top" alt="">
+				Playground
 			</a>
-			<div class=" user-panel">
+
+			<!-- この下の行に mr-auto クラスを付与するだけ -->
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Contact</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
 				<?php if ($user != 'guest') : ?>
-					<a href="./mypage.php"><?php echo h($user["user_name"]) ?></a>
+					<li class="dropdown">
+						<a class="btn btn-success nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<?php echo h($user["user_name"]) ?>
+						</a>
+
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="#">cart</a>
+							<a class="dropdown-item" href="#">setting</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="./login/logout.php">logout</a>
+						</div>
+					</li>
 				<?php else : ?>
-					<a href="./login/index.php">ログイン/登録</a>
+					<a href="./login/index.php" class="btn btn-success">ログイン/登録</a>
 				<?php endif; ?>
-			</div>
-			<!-- responsive -->
-			<div class="nav-switch">
-				<i class="fa fa-bars"></i>
-			</div>
-			<!-- site menu -->
-			<nav class="main-menu">
-				<ul>
-					<li><a href="index.php">ホーム</a></li>
-					<li><a href="review.php">ゲーム</a></li>
-					<li><a href="categories.php">ブログ</a></li>
-					<li><a href="community.php">フォーラム</a></li>
-					<li><a href="contact.php">コンタクト</a></li>
-				</ul>
-			</nav>
+			</ul>
+
 		</div>
-	</header>
+	</nav>
+
+
 	<!-- Header section end -->
 
 
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
-			<div class="hs-item set-bg" data-setbg="img/slider-1.jpg">
+			<div class="hs-item set-bg" data-setbg="img/slider-1.jpg" style="z-index: 0 !important;">
 				<div class="hs-text">
 					<div class="container">
 						<h2>最高の <span>ゲーム</span>がそこにある</h2>
@@ -468,6 +478,7 @@ try {
 
 
 	<!--====== Javascripts & Jquery ======-->
+	<script src="js/popper.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>

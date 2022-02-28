@@ -58,7 +58,7 @@ try {
 
     <ul>
         <li>
-            <a href="./WebTETRIS/">TETRIS</a>
+            <a href="./WebTETRIS/" target="blank">TETRIS</a>
         </li>
     </ul>
 </body>
