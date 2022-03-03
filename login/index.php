@@ -58,7 +58,7 @@ if (!empty($_POST)) {
                     </div>
                     <p class="h2 font-weight-bold">ログイン</p>
                     <p class="mb-3">初めてご利用の方は<a href="./signup.php">アカウントを作成</a>してください</p>
-                    <form action="" method="post">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <?php if ($error == 'typomiss') : ?>
                             <div class="alert alert-danger" role="alert">ユーザー情報、またはパスワードが違います</div>
                         <?php endif; ?>

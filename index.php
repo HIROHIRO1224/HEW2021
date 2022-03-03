@@ -2,10 +2,9 @@
 
 session_start();
 
-include_once './mod/DBA.php';
-include_once './mod/LoginClass.php';
-include_once './mod/module.php';
-
+require_once './mod/DBA.php';
+require_once './mod/LoginClass.php';
+require_once './mod/module.php';
 $user = 'guest';
 
 try {
@@ -67,7 +66,7 @@ try {
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 		<div class="container">
 			<a href="./" class="navbar-brand">
 				<!-- <a class="navbar-brand pl-1" href="#" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;"> -->
@@ -78,7 +77,7 @@ try {
 			<!-- この下の行に mr-auto クラスを付与するだけ -->
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Search</a>
+					<a class="nav-link" href="./search.php">Search</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Contact</a>
@@ -92,7 +91,7 @@ try {
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="#">cart</a>
+							<a class="dropdown-item" href="/HEW/cart/">cart</a>
 							<a class="dropdown-item" href="#">setting</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="./login/logout.php">logout</a>
@@ -456,21 +455,13 @@ try {
 
 
 	<!-- Footer section -->
-	<footer class="footer-section">
+	<footer class="footer mt-auto py-3 bg-dark">
 		<div class="container">
-			<ul class="footer-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="review.html">Games</a></li>
-				<li><a href="categories.html">Blog</a></li>
-				<li><a href="community.html">Forums</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-			<p class="copyright">
+			<span class="text-muted">
 				Copyright &copy;<script>
 					document.write(new Date().getFullYear());
 				</script> All rights reserved
-
-			</p>
+			</span>
 		</div>
 	</footer>
 	<!-- Footer section end -->

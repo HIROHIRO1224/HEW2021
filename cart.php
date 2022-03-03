@@ -36,12 +36,47 @@ try {
         exit;
     }
 
-    if (!empty($user['user_cart'])) {
+    $cart = '';
+    var_dump($user);
+    if ($user['user_cart'] == null) {
         # code...
+        $cart = array();
+    } else {
         $cart = explode(
             ',',
             $user['user_cart']
         );
+    }
+    if (!empty($_REQUEST['action'])) {
+
+        // カートに追加する処理
+        if ($_REQUEST["action"] == 'add') {
+            for ($i = 0; $i < count($cart); $i++) {
+                # code...
+                if ($cart[$i] == $_REQUEST['item_id']) {
+                    $result = 'already';
+                    header("Location: {$_REQUEST['sender']}?cart_result={$result}");
+                    exit();
+                }
+            }
+            array_push($cart, $_REQUEST['item_id']);
+            $cart = implode(",", $cart);
+            $params = ['user_cart' => $cart];
+            $dba = new DBA('root', '', 'HEW', 'localhost');
+            $result = $dba->UPDATE('t_users', $params, 'user_id', $user['user_id']);
+            if ($result) {
+                $result = 'success';
+            } else {
+                $result = 'miss';
+            }
+            header("Location: {$_REQUEST['sender']}?cart_result={$result}");
+            exit();
+        } elseif ($_REQUEST['action'] == 'delete') {
+            echo "消す処理";
+        }
+    }
+    if (!empty($user['user_cart'])) {
+        # code...
     } else {
         # code...
         echo 'カートが空っぽだよ';
@@ -49,20 +84,3 @@ try {
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
-</html>

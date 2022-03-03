@@ -75,7 +75,7 @@ if (!empty($_POST)) {
                         </div>
                         <p class="h2 font-weight-bold">新規登録</p>
                         <p class="mb-3">既にアカウントをお持ちの場合は、<a href="./index.php">ログインしてください。</a></p>
-                        <form action="" method="post">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                             <div class="mt-3 mb-3">
                                 <label for="username" class="form-label">ユーザー名</label>
                                 <input type="text" name="username" id="username" class="form-control" value="<? if (!empty($_POST)) echo h($_POST["username"]); ?>">

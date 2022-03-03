@@ -259,7 +259,7 @@ class DBA
             }
         }
         $sql .= " WHERE {$idColumn} = :{$idColumn};";
-
+        echo $sql;
         // SQL文をセット
         $stmt = $this->conn->prepare($sql);
 
