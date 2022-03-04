@@ -43,7 +43,7 @@ try {
 <html lang="ja">
 
 <head>
-    <title>Game Shop</title>
+    <title>Playground</title>
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -112,14 +112,13 @@ try {
                 <img class="img-fluid col-3 mx-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
                 <div class="col-6 row mx-3">
                     <h2 class="font-weight-bold col-12"><?php echo h($column['item_name']) ?></h2>
-                    <h6 class="col-12">任天堂</h6>
+                    <h6 class="col-12"><?php echo h($column['item_corporate']) ?></h6>
                     <h6 class="col-12"><?php echo h($column['item_category']) ?></h6>
                     <h4 class="col-6">☆ <?php echo h($column['item_sold']) ?></h4>
                     <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
                     <div class="col-3 mx-5">
-                        <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                     </div>
-
                 </div>
                 <hr class="col-11">
                 <h2 class="font-weight-bold col-11">商品説明</h2>

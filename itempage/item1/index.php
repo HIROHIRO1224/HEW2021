@@ -43,7 +43,7 @@ try {
 <html lang="ja">
 
 <head>
-    <title>Game Shop</title>
+    <title>Playground</title>
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -92,7 +92,7 @@ try {
                             <a class="dropdown-item" href="/HEW/cart/">cart</a>
                             <a class="dropdown-item" href="#">setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="./login/logout.php">logout</a>
+                            <a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
                         </div>
                     </li>
                 <?php else : ?>
@@ -117,7 +117,7 @@ try {
                     <h4 class="col-6">☆ <?php echo h($column['item_sold']) ?></h4>
                     <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
                     <div class="col-3 mx-5">
-                        <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                     </div>
 
                 </div>

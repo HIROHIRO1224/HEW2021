@@ -52,11 +52,11 @@ try {
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<link rel="stylesheet" href="css/owl.carousel.css" />
-	<link rel="stylesheet" href="css/style.css" />
-	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="/HEW/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/HEW/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="/HEW/css/owl.carousel.css" />
+	<link rel="stylesheet" href="/HEW/css/style.css" />
+	<link rel="stylesheet" href="/HEW/css/animate.css" />
 
 
 </head>
@@ -68,9 +68,9 @@ try {
 	</div>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 		<div class="container">
-			<a href="./" class="navbar-brand">
+			<a href="/HEW/" class="navbar-brand">
 				<!-- <a class="navbar-brand pl-1" href="#" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;"> -->
-				<img src="./img/Logo.png" width="28" height="30" class="d-inline-block align-top" alt="">
+				<img src="/HEW/img/Logo.png" width="28" height="30" class="d-inline-block align-top" alt="">
 				Playground
 			</a>
 
@@ -94,11 +94,11 @@ try {
 							<a class="dropdown-item" href="/HEW/cart/">cart</a>
 							<a class="dropdown-item" href="#">setting</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="./login/logout.php">logout</a>
+							<a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
 						</div>
 					</li>
 				<?php else : ?>
-					<a href="./login/index.php" class="btn btn-success">ログイン/登録</a>
+					<a href="/HEW/login/" class="btn btn-success">ログイン/登録</a>
 				<?php endif; ?>
 			</ul>
 
@@ -468,12 +468,12 @@ try {
 
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="js/popper.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.marquee.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="/HEW/js/popper.min.js"></script>
+	<script src="/HEW/js/jquery-3.2.1.min.js"></script>
+	<script src="/HEW/js/bootstrap.min.js"></script>
+	<script src="/HEW/js/owl.carousel.min.js"></script>
+	<script src="/HEW/js/jquery.marquee.min.js"></script>
+	<script src="/HEW/js/main.js"></script>
 </body>
 
 </html>

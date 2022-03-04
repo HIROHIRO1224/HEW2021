@@ -73,6 +73,24 @@ try {
             exit();
         } elseif ($_REQUEST['action'] == 'delete') {
             echo "消す処理";
+            for ($i = 0; $i < count($cart); $i++) {
+                # code...
+                if ($_REQUEST['item_id'] == $cart[$i]) {
+                    # code...
+                    unset($cart[$i]);
+                    $cart = implode(",", $cart);
+                    $params = ['user_cart' => $cart];
+                    $dba = new DBA('root', '', 'HEW', 'localhost');
+                    $result = $dba->UPDATE('t_users', $params, 'user_id', $user['user_id']);
+                    if ($result) {
+                        $result = 'success';
+                    } else {
+                        $result = 'miss';
+                    }
+                    header("Location: {$_REQUEST['sender']}?cart_result={$result}");
+                    exit();
+                }
+            }
         }
     }
     if (!empty($user['user_cart'])) {

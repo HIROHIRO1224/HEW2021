@@ -40,19 +40,6 @@ try {
     } else {
         $columns = $dba->SELECT('t_items', DBA::ALL, DBA::ALL);
     }
-    foreach ($columns as $column) {
-        # code...
-        $items .= '<div class="card mx-3 mb-5" style="width: 15rem;">
-                    <img class="card-img-top" src="./img/item/' . $column['item_image'] . '" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title text-truncate">' . $column['item_name'] . '</h5>
-                        <p class="">' . $column['item_category'] . '</p>
-                        <p class="card-text">￥' . $column['item_price'] . '</p>
-                        <a href="./itempage/item' . $column['item_id'] . '/index.php" class="btn btn-link">詳しくみる</a>
-                    </div>
-                </div>
-';
-    }
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
@@ -63,7 +50,7 @@ try {
 <html lang="ja">
 
 <head>
-    <title>Game Shop</title>
+    <title>Playground</title>
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -113,7 +100,7 @@ try {
                             <a class="dropdown-item" href="/HEW/cart/">cart</a>
                             <a class="dropdown-item" href="#">setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="./login/logout.php">logout</a>
+                            <a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
                         </div>
                     </li>
                 <?php else : ?>
@@ -140,7 +127,17 @@ try {
 
             <div class="row justify-content-center">
 
-                <?php echo $items; ?>
+                <?php foreach ($columns as $column) : ?>
+                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                        <img class="card-img-top" src="./img/item/<?php echo h($column['item_image']) ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate"><?php echo h($column['item_name']) ?></h5>
+                            <p class=""><?php echo h($column['item_category']) ?></p>
+                            <p class="card-text">￥<?php echo h($column['item_price']) ?></p>
+                            <a href="/HEW/itempage/item<?php echo h($column['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
 
             </div>
         </div>
