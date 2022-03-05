@@ -128,7 +128,7 @@ try {
             <div class="row justify-content-center">
 
                 <?php foreach ($columns as $column) : ?>
-                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                    <div class="card mx-4 mb-5" style="width: 16rem;">
                         <img class="card-img-top" src="./img/item/<?php echo h($column['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate"><?php echo h($column['item_name']) ?></h5>

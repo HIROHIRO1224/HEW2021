@@ -10,6 +10,8 @@ $user = '';
 
 try {
     //code...
+    $dba = new DBA('root', '', 'HEW', 'localhost');
+
     if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_data'])) {
         # code...
         $loginclass = new LoginClass();
@@ -25,15 +27,31 @@ try {
     } elseif (isset($_SESSION['user_id']) && $_SESSION['time'] + 3600 > time()) {
         # code...
         $_SESSION['time'] = time();
-        $dba = new DBA('root', '', 'HEW', 'localhost');
         $condition = 'user_id = ?;';
         $params = [$_SESSION['user_id']];
         $columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
         $user = $columns[0];
     } else {
         # code...
-        header("Location: ./login/index.php?error=timeout");
+        header("Location: /HEW/login/index.php?error=timeout");
         exit;
+    }
+
+    if (!empty($_POST)) {
+        $data = [
+            'user_name' => $_POST['user_name'],
+            'user_tname' => $_POST['user_tname'],
+            'user_email' => $_POST['user_email'],
+            'user_card' => $_POST['user_card'],
+            'user_card_limit' => $_POST['user_card_limit'],
+            'user_birthday' => $_POST['user_birthday']
+        ];
+        $result = $dba->UPDATE('t_users', $data, 'user_id', $user['user_id']);
+
+        $condition = 'user_id = ?;';
+        $params = [$_SESSION['user_id']];
+        $columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
+        $user = $columns[0];
     }
 } catch (PDOException $e) {
     throw $e->getMessage();
@@ -62,7 +80,7 @@ try {
 
 
 
-    <title>Document</title>
+    <title>Playground マイページ</title>
 </head>
 
 <body>
@@ -104,22 +122,46 @@ try {
         </div>
     </nav>
     <div class="row container-fluid">
-        <nav class="nav col-2 flex-column py-3 ml-3 justify-content-center border-right">
-            <a class="nav-link active" href="#!">設定</a>
-            <a class="nav-link" href="#!">購入済み</a>
-            <a class="nav-link" href="#!">Link</a>
-        </nav>
-        <div class="col-8 justify-content-center">
-            <a href="#">設定</a>
-            <a href="/HEW/login/logout.php">ログアウト</a>
-            <p>購入済み</p>
+        <div class="col-2 py-5 border-right">
+            <nav class="nav mt-3 flex-column">
+                <a class="nav-link active" href="#">設定</a>
+                <a class="nav-link" href="./purchased.php">購入済み</a>
+            </nav>
 
-            <ul>
-                <li>
-                    <a href="./WebTETRIS/" target="blank">TETRIS</a>
-                </li>
-            </ul>
+        </div>
+        <div class="row col-9 justify-content-left py-3 mx-auto">
+            <h2 class="col-12 font-weight-bold mt-4">設定</h2>
+            <div class=" col-10 ml-5 mt-3">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <div class="form-group mb-4">
+                        <label for="user_name">ユーザーネーム</label>
+                        <input type="text" name="user_name" id="user_name" class="form-control col-10" value="<?php echo h($user['user_name']) ?>">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_tname">本名</label>
+                        <input type="text" name="user_tname" id="user_tname" class="form-control col-10" value="<?php echo h($user['user_tname']) ?>">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_email">メールアドレス</label>
+                        <input type="mail" name="user_email" id="user_email" class="form-control col-10" value="<?php echo h($user['user_email']) ?>">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_email">生年月日</label>
+                        <input type="date" name="user_birthday" id="user_birthday" class="form-control col-10" value="<?php if ($user['user_birthday'] != null) echo h($user['user_birthday']) ?>">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_card">クレジットカード番号</label>
+                        <input type="text" name="user_card" id="user_card" class="form-control col-10" value="<?php if ($user['user_card'] != null) echo h($user['user_card']) ?>">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="user_card_limit">有効期限</label>
+                        <input type="month" name="user_card_limit" id="user_card_limit" class="form-control col-10" value="<?php echo h($user['user_card_limit']); ?>">
+                    </div>
 
+                    <input type="submit" class="btn btn-primary ml-auto" value="変更">
+                </form>
+
+            </div>
         </div>
 
     </div>

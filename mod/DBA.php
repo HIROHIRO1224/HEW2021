@@ -243,8 +243,6 @@ class DBA
      */
     public function UPDATE(string $table, array $data, string $idColumn, string $id)
     {
-
-        // SQL文を組み立てる変数
         $sql = "UPDATE {$table} SET ";
 
         // カラム名のキー情報を配列でいれる
@@ -259,7 +257,6 @@ class DBA
             }
         }
         $sql .= " WHERE {$idColumn} = :{$idColumn};";
-        echo $sql;
         // SQL文をセット
         $stmt = $this->conn->prepare($sql);
 
@@ -268,7 +265,6 @@ class DBA
             $stmt->bindValue(":{$column}", $data[$column]);
         }
         $stmt->bindValue(":{$idColumn}", $id);
-
         // SQL文を実行
         $ret = $stmt->execute();
 

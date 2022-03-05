@@ -125,7 +125,7 @@ try {
                     <h4 class="mt-3 col-10"><?php echo h(count($cart)) ?>件表示中</h4>
 
                     <?php for ($i = 0; $i < count($cart); $i++) : ?>
-                        </a>
+
                         <div class="col-11 mb-3 row justify-content-center ml-5">
                             <div class="row col-12 py-4 border rounded mb-1">
                                 <img class="img-fluid col-4" src="/HEW/img/item/<?php echo h($t_items[$cart[$i] - 1]['item_image']) ?>" alt="">
@@ -200,9 +200,9 @@ try {
                 <div class="row col-8 mx-auto my-3 justify-content-center">
                     <h4 class="col-12">0件表示中</h4>
                     <div class="col-12 border justify-content-center">
-                        <h5 class="col-12 text-center mt-3">カートに何も入っておりません</h5>
-                        <h5 class="col-12 text-center mb-3">あなたに会うゲームを見つけにいきましょう</h5>
-                        <div class="col-2 mx-auto">
+                        <h6 class="col-12 text-center mt-5">カートに何も入っておりません</h6>
+                        <h6 class="col-12 text-center mb-3">あなたに会うゲームを見つけにいきましょう</h6>
+                        <div class="col-2 mx-auto mt-3 mb-5">
                             <a class="btn btn-primary mb-3" href="">買い物を続ける</a>
 
                         </div>
