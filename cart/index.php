@@ -32,6 +32,7 @@ try {
         header("Location:/HEW/login/");
         exit;
     }
+
     $cart = explode(',', $user['user_cart']);
     if (!empty($cart[0])) {
 
@@ -42,7 +43,60 @@ try {
         }
     }
     $j = 0;
-    $randitem = [rand(0, count($t_items) - 1), rand(0, count($t_items) - 1), rand(0, count($t_items) - 1)];
+
+    $item_purchased = [];
+    $user_cart = explode(',', $user['user_cart']);
+    $user_purchased = explode(',', $user['user_purchased']);
+
+    $item_recommend = [];
+    for ($i = 0; $i < 3; $i++) {
+        # code...
+        $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [rand(1, 8)]);
+        $t_item = $columns[0];
+
+        $status = '';
+        # code...
+        if ($user_cart[0] != '') {
+            # code...
+            for ($j = 0; $j < count($user_cart); $j++) {
+                # code...
+                if ($user_cart[$j] == $t_item['item_id']) {
+                    # code...
+                    $status = 'cart_in';
+                    break;
+                }
+            }
+        }
+        if ($user_purchased[0] != '') {
+            # code...
+            for ($j = 0; $j < count($user_purchased); $j++) {
+                # code...
+                if ($user_purchased[$j] == $t_item['item_id']) {
+                    # code...
+                    $status = 'purchased';
+                    break;
+                }
+            }
+        }
+        if ($user_cart[0] == '' && $user_purchased[0] == '') {
+            $status = '';
+        }
+
+        # code...
+
+        array_push($item_recommend, [
+            'item_id' => $t_item['item_id'],
+            'item_name' => $t_item['item_name'],
+            'item_price' => $t_item['item_price'],
+            'item_category' => $t_item['item_category'],
+            'item_corporate' => $t_item['item_corporate'],
+            'item_url' => $t_item['item_url'],
+            'item_sold' => $t_item['item_sold'],
+            'item_image' => $t_item['item_image'],
+            'item_registered' => $t_item['item_registered'],
+            'item_status' => $status,
+        ]);
+    }
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
@@ -72,9 +126,10 @@ try {
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 clearfix">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div class="container">
             <a href="/HEW/" class="navbar-brand">
+                <!-- <a class="navbar-brand pl-1" href="#" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;"> -->
                 <img src="/HEW/img/Logo.png" width="28" height="30" class="d-inline-block align-top" alt="">
                 Playground
             </a>
@@ -96,19 +151,21 @@ try {
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/HEW/cart/">cart</a>
-                            <a class="dropdown-item" href="#">setting</a>
+                            <a href="/HEW/mypage/" class="dropdown-item">ユーザー設定</a>
+                            <a class="dropdown-item" href="/HEW/cart/">カート</a>
+                            <a class="dropdown-item text-dark" href="/HEW/mypage/purchased.php">購入済み</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
+                            <a class="dropdown-item text-danger" href="/HEW/login/logout.php">ログアウト</a>
                         </div>
                     </li>
                 <?php else : ?>
-                    <a href="/HEW/login/index.php" class="btn btn-success">ログイン/登録</a>
+                    <a href="/HEW/login/" class="btn btn-success">ログイン/登録</a>
                 <?php endif; ?>
             </ul>
 
         </div>
     </nav>
+
     <main>
         <div class="container-fluid my-5 pl-5 clearfix">
             <!-- <div class="row justify-content-left">
@@ -161,95 +218,151 @@ try {
                 <div class="row my-3 col-12 justify-content-center float-left">
                     <h4 class="col-12 text-center font-weight-bold mt-5 mb-3">おすすめ商品</h4>
                     <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[0]]['item_image']) ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
-                                <?php echo h($t_items[$randitem[0]]['item_name']) ?>
+                                <a href="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']); ?>/">
+                                    <?php echo h($item_recommend[0]['item_name']) ?>
+                                </a>
                             </h5>
-                            <p class=""><?php echo h($t_items[$randitem[0]]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($t_items[$randitem[0]]['item_price']) ?></p>
-                            <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[0]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
-                        </div>
-                    </div>
-
-                    <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[1]]['item_image']) ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title text-truncate">
-                                <?php echo h($t_items[$randitem[1]]['item_name']) ?>
-                            </h5>
-                            <p class=""><?php echo h($t_items[$randitem[1]]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($t_items[$randitem[1]]['item_price']) ?></p>
-                            <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[1]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
+                            <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
+                            <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
+                            <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <?php elseif ($item_recommend[0]['item_status'] == '') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[2]]['item_image']) ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
-                                <?php echo h($t_items[$randitem[2]]['item_name']) ?>
+                                <a href="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']); ?>/">
+                                    <?php echo h($item_recommend[1]['item_name']) ?>
+                                </a>
                             </h5>
-                            <p class=""><?php echo h($t_items[$randitem[2]]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($t_items[$randitem[2]]['item_price']) ?></p>
-                            <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[2]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
+                            <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
+                            <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
+                            <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <?php elseif ($item_recommend[1]['item_status'] == '') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <?php endif; ?>
                         </div>
                     </div>
+                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate">
+                                <a href="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']); ?>/">
+                                    <?php echo h($item_recommend[2]['item_name']) ?>
+                                </a>
+                            </h5>
+                            <p class=""><?php echo h($item_recommend[2]['item_category']) ?></p>
+                            <p class="card-text">￥<?php echo h($item_recommend[2]['item_price']) ?></p>
+                            <?php if ($item_recommend[2]['item_status'] == 'cart_in') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <?php elseif ($item_recommend[2]['item_status'] == 'purchased') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <?php elseif ($item_recommend[2]['item_status'] == '') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+
                 </div>
 
-            <?php else : ?>
-                <div class="row col-8 mx-auto my-3 justify-content-center">
-                    <h4 class="col-12">0件表示中</h4>
-                    <div class="col-12 border justify-content-center">
-                        <h6 class="col-12 text-center mt-5">カートに何も入っておりません</h6>
-                        <h6 class="col-12 text-center mb-3">あなたに会うゲームを見つけにいきましょう</h6>
-                        <div class="col-2 mx-auto mt-3 mb-5">
-                            <a class="btn btn-primary mb-3" href="">買い物を続ける</a>
-
-                        </div>
-
-                    </div>
-                    <div class="row my-3 col-12 justify-content-center">
-                        <h4 class="col-12 text-center font-weight-bold">おすすめ商品</h4>
-                        <div class="card mx-3 mb-5" style="width: 15rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[0]]['item_image']) ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title text-truncate">
-                                    <?php echo h($t_items[$randitem[0]]['item_name']) ?>
-                                </h5>
-                                <p class=""><?php echo h($t_items[$randitem[0]]['item_category']) ?></p>
-                                <p class="card-text">￥<?php echo h($t_items[$randitem[0]]['item_price']) ?></p>
-                                <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[0]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
-                            </div>
-                        </div>
-
-                        <div class="card mx-3 mb-5" style="width: 15rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[1]]['item_image']) ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title text-truncate">
-                                    <?php echo h($t_items[$randitem[1]]['item_name']) ?>
-                                </h5>
-                                <p class=""><?php echo h($t_items[$randitem[1]]['item_category']) ?></p>
-                                <p class="card-text">￥<?php echo h($t_items[$randitem[1]]['item_price']) ?></p>
-                                <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[1]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
-                            </div>
-                        </div>
-                        <div class="card mx-3 mb-5" style="width: 15rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($t_items[$randitem[2]]['item_image']) ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title text-truncate">
-                                    <?php echo h($t_items[$randitem[2]]['item_name']) ?>
-                                </h5>
-                                <p class=""><?php echo h($t_items[$randitem[2]]['item_category']) ?></p>
-                                <p class="card-text">￥<?php echo h($t_items[$randitem[2]]['item_price']) ?></p>
-                                <a href="/HEW/itempage/item<?php echo h($t_items[$randitem[2]]['item_id']) ?>/" class="btn btn-link">詳しくみる</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endif; ?>
 
         </div>
+
+    <?php else : ?>
+        <div class="row col-8 mx-auto my-3 justify-content-center">
+            <h4 class="col-12">0件表示中</h4>
+            <div class="col-12 border justify-content-center">
+                <h6 class="col-12 text-center mt-5">カートに何も入っておりません</h6>
+                <h6 class="col-12 text-center mb-3">あなたに会うゲームを見つけにいきましょう</h6>
+                <div class="col-2 mx-auto mt-3 mb-5">
+                    <a class="btn btn-primary mb-3" href="/HEW/search.php">買い物を続ける</a>
+
+                </div>
+
+            </div>
+            <div class="row my-3 col-12 justify-content-center">
+                <h4 class="col-12 text-center font-weight-bold">おすすめ商品</h4>
+                <div class="card mx-3 mb-5" style="width: 15rem;">
+                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">
+                            <a href="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']); ?>/">
+                                <?php echo h($item_recommend[0]['item_name']) ?>
+                            </a>
+                        </h5>
+                        <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
+                        <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
+                        <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                        <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                        <?php elseif ($item_recommend[0]['item_status'] == '') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="card mx-3 mb-5" style="width: 15rem;">
+                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">
+                            <a href="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']); ?>/">
+                                <?php echo h($item_recommend[1]['item_name']) ?>
+                            </a>
+                        </h5>
+                        <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
+                        <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
+                        <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                        <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                        <?php elseif ($item_recommend[1]['item_status'] == '') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="card mx-3 mb-5" style="width: 15rem;">
+                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">
+                            <a href="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']); ?>/">
+                                <?php echo h($item_recommend[2]['item_name']) ?>
+                            </a>
+                        </h5>
+                        <p class=""><?php echo h($item_recommend[2]['item_category']) ?></p>
+                        <p class="card-text">￥<?php echo h($item_recommend[2]['item_price']) ?></p>
+                        <?php if ($item_recommend[2]['item_status'] == 'cart_in') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                        <?php elseif ($item_recommend[2]['item_status'] == 'purchased') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                        <?php elseif ($item_recommend[2]['item_status'] == '') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        </div>
+
+    <?php endif; ?>
+
+    </div>
 
 
 

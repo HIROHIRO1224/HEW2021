@@ -84,9 +84,10 @@ try {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 clearfix">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div class="container">
             <a href="/HEW/" class="navbar-brand">
+                <!-- <a class="navbar-brand pl-1" href="#" style="background-image: url('./img/Logo.png'); background-repeat: no-repeat; background-size: contain;"> -->
                 <img src="/HEW/img/Logo.png" width="28" height="30" class="d-inline-block align-top" alt="">
                 Playground
             </a>
@@ -94,7 +95,7 @@ try {
             <!-- この下の行に mr-auto クラスを付与するだけ -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/HEW/search.php">Search</a>
+                    <a class="nav-link" href="./search.php">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -108,14 +109,15 @@ try {
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/HEW/cart/">cart</a>
-                            <a class="dropdown-item" href="#">setting</a>
+                            <a href="/HEW/mypage/" class="dropdown-item">ユーザー設定</a>
+                            <a class="dropdown-item" href="/HEW/cart/">カート</a>
+                            <a class="dropdown-item text-dark" href="/HEW/mypage/purchased.php">購入済み</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
+                            <a class="dropdown-item text-danger" href="/HEW/login/logout.php">ログアウト</a>
                         </div>
                     </li>
                 <?php else : ?>
-                    <a href="/HEW/login/index.php" class="btn btn-success">ログイン/登録</a>
+                    <a href="/HEW/login/" class="btn btn-success">ログイン/登録</a>
                 <?php endif; ?>
             </ul>
 
@@ -129,9 +131,9 @@ try {
             </nav>
 
         </div>
-        <div class="row col-9 justify-content-left py-3 mx-auto">
+        <div class="row col-9 justify-content-left py-3 ml-5">
             <h2 class="col-12 font-weight-bold mt-4">設定</h2>
-            <div class=" col-10 ml-5 mt-3">
+            <div class=" col-10 mx-auto mt-3">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div class="form-group mb-4">
                         <label for="user_name">ユーザーネーム</label>

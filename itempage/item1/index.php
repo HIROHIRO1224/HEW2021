@@ -6,7 +6,6 @@ include_once '../../mod/LoginClass.php';
 include_once '../../mod/module.php';
 
 $user = 'guest';
-
 try {
     //code...
     $dba = new DBA('root', '', 'HEW', 'localhost');
@@ -30,9 +29,55 @@ try {
         $columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
         $user = $columns[0];
     }
-    $columns = '';
+    $column = [];
     $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [1]);
-    $column = $columns[0];
+
+
+    $user_cart = explode(',', $user['user_cart']);
+    $user_purchased = explode(',', $user['user_purchased']);
+
+
+    $status = '';
+    # code...
+    if ($user_cart[0] != '') {
+        # code...
+        for ($j = 0; $j < count($user_cart); $j++) {
+            # code...
+            if ($user_cart[$j] == $columns[0]['item_id']) {
+                # code...
+                $status = 'cart_in';
+                break;
+            }
+        }
+    }
+    if ($user_purchased[0] != '') {
+        # code...
+        for ($j = 0; $j < count($user_purchased); $j++) {
+            # code...
+            if ($user_purchased[$j] == $columns[0]['item_id']) {
+                # code...
+                $status = 'purchased';
+                break;
+            }
+        }
+    }
+    if ($user_cart[0] == '' && $user_purchased[0] == '') {
+        $status = '';
+    }
+
+
+    $column = [
+        'item_id' => $columns[0]['item_id'],
+        'item_name' => $columns[0]['item_name'],
+        'item_price' => $columns[0]['item_price'],
+        'item_category' => $columns[0]['item_category'],
+        'item_corporate' => $columns[0]['item_corporate'],
+        'item_url' => $columns[0]['item_url'],
+        'item_sold' => $columns[0]['item_sold'],
+        'item_image' => $columns[0]['item_image'],
+        'item_registered' => $columns[0]['item_registered'],
+        'item_status' => $status,
+    ];
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
@@ -75,7 +120,7 @@ try {
             <!-- この下の行に mr-auto クラスを付与するだけ -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/HEW/search.php">Search</a>
+                    <a class="nav-link" href="./search.php">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -89,10 +134,11 @@ try {
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/HEW/cart/">cart</a>
-                            <a class="dropdown-item" href="#">setting</a>
+                            <a href="/HEW/mypage/" class="dropdown-item">ユーザー設定</a>
+                            <a class="dropdown-item" href="/HEW/cart/">カート</a>
+                            <a class="dropdown-item text-dark" href="/HEW/mypage/purchased.php">購入済み</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
+                            <a class="dropdown-item text-danger" href="/HEW/login/logout.php">ログアウト</a>
                         </div>
                     </li>
                 <?php else : ?>
@@ -117,7 +163,14 @@ try {
                     <h4 class="col-6">☆ <?php echo h($column['item_sold']) ?></h4>
                     <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
                     <div class="col-3 mx-5">
-                        <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <?php if ($column['item_status'] == 'cart_in') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                        <?php elseif ($column['item_status'] == 'purchased') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                        <?php elseif ($column['item_status'] == '') : ?>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                        <?php endif; ?>
+
                     </div>
 
                 </div>

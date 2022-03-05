@@ -1,5 +1,6 @@
 <?php
 
+
 include_once("../mod/LoginClass.php");
 include_once("../mod/DBA.php");
 include_once("../mod/module.php");
@@ -44,11 +45,14 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/HEW/img/Logo.png" rel="shortcut icon" type="image/png" />
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
 
 
-    <title>Document</title>
+    <title>新規登録</title>
 </head>
 
 <body>
@@ -76,6 +80,10 @@ if (!empty($_POST)) {
                         <p class="h2 font-weight-bold">新規登録</p>
                         <p class="mb-3">既にアカウントをお持ちの場合は、<a href="./index.php">ログインしてください。</a></p>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                            <?php if (!$result && $error == "unknown") : ?>
+                                <div class="alert alert-danger" role="alert">登録に失敗しました。再度お試しください。</div>
+                            <?php endif; ?>
+
                             <div class="mt-3 mb-3">
                                 <label for="username" class="form-label">ユーザー名</label>
                                 <input type="text" name="username" id="username" class="form-control" value="<? if (!empty($_POST)) echo h($_POST["username"]); ?>">

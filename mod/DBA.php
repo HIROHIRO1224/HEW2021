@@ -184,10 +184,8 @@ class DBA
 
         //sqlの部品を一つにまとめる
         $sql .= $sql2 . ");";
-
         //組み立てたsqlを使ってprepare関数を実行
         $stmt = $this->conn->prepare($sql);
-
         //valueにデータを当てはめる
         foreach ($columns as $column) {
             $stmt->bindValue(":{$column}", $data[$column]);

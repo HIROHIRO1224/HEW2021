@@ -91,10 +91,11 @@ try {
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="/HEW/cart/">cart</a>
-							<a class="dropdown-item" href="#">setting</a>
+							<a href="/HEW/mypage/" class="dropdown-item">ユーザー設定</a>
+							<a class="dropdown-item" href="/HEW/cart/">カート</a>
+							<a class="dropdown-item text-dark" href="/HEW/mypage/purchased.php">購入済み</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="/HEW/login/logout.php">logout</a>
+							<a class="dropdown-item text-danger" href="/HEW/login/logout.php">ログアウト</a>
 						</div>
 					</li>
 				<?php else : ?>
@@ -265,7 +266,7 @@ try {
 
 
 	<!-- Tournaments section -->
-	<section class="tournaments-section spad">
+	<!-- <section class="tournaments-section spad">
 		<div class="container">
 			<div class="tournament-title">大会情報</div>
 			<div class="row">
@@ -307,12 +308,12 @@ try {
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Tournaments section bg -->
 
 
 	<!-- Review section -->
-	<section class="review-section spad set-bg" data-setbg="img/review-bg.png">
+	<!-- <section class="review-section spad set-bg" data-setbg="img/review-bg.png">
 		<div class="container">
 			<div class="section-title">
 				<div class="cata new">new</div>
@@ -365,7 +366,7 @@ try {
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Review section end -->
 
 
