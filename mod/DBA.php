@@ -193,7 +193,6 @@ class DBA
 
         //execute関数実行
         $ret = $stmt->execute();
-
         //実行できたかどうかtrueかfalseでかえす
         return $ret;
     }

@@ -171,6 +171,20 @@ try {
             <!-- <div class="row justify-content-left">
                 <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
             </div> -->
+            <?php if (!empty($_REQUEST['cart_result'])) {
+                if ($_REQUEST['cart_result'] == 'success') {
+                    # code...
+            ?>
+                    <div class="row justify-content-center mt-3">
+                        <div class="alert alert-success mx-auto col-6">
+                            カートに追加しました
+                            <a href="/HEW/cart/" class="btn btn-link">カートへ</a>
+                        </div>
+                    </div>
+            <?php
+                }
+            } ?>
+
             <div class="row col-12 justify-content-center">
                 <div class="col-10">
                     <h2 class="font-weight-bold">ショッピングカート</h2>
@@ -209,9 +223,9 @@ try {
                         <h2 class="font-weight-bold">￥<?php echo h($total_price); ?></h4>
                     </div>
                     <hr class="col-10">
-                    <div href="" class="col-12 btn btn-primary">
+                    <a href="/HEW/cash_register/" class="col-12 btn btn-primary">
                         レジへ進む
-                    </div>
+                    </a>
 
                 </div>
 
@@ -228,11 +242,11 @@ try {
                             <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
                             <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
                             <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                             <?php elseif ($item_recommend[0]['item_status'] == '') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -247,11 +261,11 @@ try {
                             <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
                             <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
                             <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                             <?php elseif ($item_recommend[1]['item_status'] == '') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -266,11 +280,11 @@ try {
                             <p class=""><?php echo h($item_recommend[2]['item_category']) ?></p>
                             <p class="card-text">￥<?php echo h($item_recommend[2]['item_price']) ?></p>
                             <?php if ($item_recommend[2]['item_status'] == 'cart_in') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[2]['item_status'] == 'purchased') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                             <?php elseif ($item_recommend[2]['item_status'] == '') : ?>
-                                <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -306,11 +320,11 @@ try {
                         <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
                         <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
                         <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                         <?php elseif ($item_recommend[0]['item_status'] == '') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -325,11 +339,11 @@ try {
                         <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
                         <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
                         <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                         <?php elseif ($item_recommend[1]['item_status'] == '') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -344,11 +358,11 @@ try {
                         <p class=""><?php echo h($item_recommend[2]['item_category']) ?></p>
                         <p class="card-text">￥<?php echo h($item_recommend[2]['item_price']) ?></p>
                         <?php if ($item_recommend[2]['item_status'] == 'cart_in') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($item_recommend[2]['item_status'] == 'purchased') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                         <?php elseif ($item_recommend[2]['item_status'] == '') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                         <?php endif; ?>
                     </div>
                 </div>
