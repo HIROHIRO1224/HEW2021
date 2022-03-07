@@ -152,6 +152,7 @@ try {
     </nav>
 
     <main>
+
         <!-- 追加部分 -->
         <div class="container-fluid my-5">
             <?php if (!empty($_REQUEST['cart_result'])) {
@@ -194,33 +195,32 @@ try {
                 <hr class="col-11">
                 <h2 class="font-weight-bold col-11">商品説明</h2>
                 <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    パズルゲームの大定番がついに登場！！
+                    戦略的部隊プレイ
                 </h3>
-                <img class="col-8 my-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
+                <img class="col-8 my-3" src="./img/apex-grid-tile-season7-horizon-04-finisher-clean.jpg.adapt.crop16x9.652w.jpg" alt="">
                 <p class="col-9" style="line-height:2rem">
-                    ごく普通の学校に通う学生が、授業の片手間に作り上げたパズルゲーム<br>
-                    UIはシンプルで操作性も抜群<br>
-                    楽しく、快適に遊べるTETRIS
+                    バトルロイヤルで巨大な浮遊都市で戦おうと、近場のアリーナで戦おうと、<br>
+                    起点を機転を聴かせなければならない。レジェンドの固有アビリティを極め、<br>
+                    チームメイトと協力して、新たな戦術と強力な連携プレイを編み出せ。
                 </p>
                 <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    webブラウザに完全対応
+                    革新的戦闘
                 </h3>
-                <img class="col-8 my-3" src="./img/9fd768a1-fa6b-4995-884f-af703119cff6.__CR174,0,1746,1080_PT0_SX970_V1___.jpg" alt="">
+                <img class="col-8 my-3" src="./img/apex-grid-tile-season9-action-03-icarusbattle-clean.jpg.adapt.crop16x9.652w.jpg" alt="">
                 <p class="col-9" style="line-height:2rem">
-                    Google Chromeに完全対応したことにより、<br>
-                    WindowsやMac、LinuxやChrome OSのクロスプラットフォームで遊べるようになりました<br>
-                    もうこれで、あなたの好きなPCで好きな時にどこでも遊べる！(ネット環境必須)
+                    幅広UI強力な武器多装備のラインナップを極めて、武器を使いこなすには、<br>
+                    素早く動き、各武器のリズムを学ぶ必要がある。<br>
+                    さらに期間限定モードで変更を加え、各シーズンに追加される大量の新コンテンツに備えろ。
                 </p>
                 <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    フリープログラミング
+                    広がり続けるユニバース
                 </h3>
-                <img class="col-8 my-3" src="./img/e81e64d4-6a21-4f8c-90f3-73b7e37830eb.__CR61,0,1164,720_PT0_SX970_V1___.jpg" alt="">
+                <img class="col-8 my-3" src="./img/apex-grid-tile-season9-valk-04-legendary-clean.jpg.adapt.crop16x9.652w.jpg" alt="">
                 <p class="col-9" style="line-height:2rem">
-                    「フリープログラミング」で自由にゲームづくり<br>
-                    「フリープログラミング」では、「ナビつきレッスン」で身に着けたテクニックを使って、<br>
-                    自分で描いたキャラクターを操作できるようにしたり、絵を描いて背景にしたり、BGMをつけたりと、<br>
-                    自由にゲームをプログラミングすることができます。<br>
-                    また、つくったゲームはインターネットやローカル通信で友だちに共有することもできます。<br>
+                    「エーペックスレジェンズ」は、ストーリーが進化し続け、<br>
+                    シーズンごとにマップが変化し、新たなレジェンドが戦いに参加し続ける、<br>
+                    没入感のある世界が舞台だ。<br>
+                    個性的な服装でApexゲームに出場し、冒険に参加しよう<br>
                 </p>
             </div>
         </div>

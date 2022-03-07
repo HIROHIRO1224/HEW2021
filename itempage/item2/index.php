@@ -181,11 +181,11 @@ try {
                     <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
                     <div class="col-3 mx-5">
                         <?php if ($column['item_status'] == 'cart_in') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column["item_id"]) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($column['item_status'] == 'purchased') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column["item_id"]) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
                         <?php elseif ($column['item_status'] == '') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/mypage/purchased.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column["item_id"]) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
                         <?php endif; ?>
                     </div>
                 </div>

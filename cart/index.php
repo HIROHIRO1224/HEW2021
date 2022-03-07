@@ -171,17 +171,27 @@ try {
             <!-- <div class="row justify-content-left">
                 <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
             </div> -->
-            <?php if (!empty($_REQUEST['cart_result'])) {
+            <?php if (!empty($_REQUEST['cart_result']) && !empty($_REQUEST['cart_action'])) {
                 if ($_REQUEST['cart_result'] == 'success') {
-                    # code...
+
+                    if ($_REQUEST['cart_action'] == 'add') {
+                        # code...
             ?>
-                    <div class="row justify-content-center mt-3">
-                        <div class="alert alert-success mx-auto col-6">
-                            カートに追加しました
-                            <a href="/HEW/cart/" class="btn btn-link">カートへ</a>
+                        <div class="row justify-content-center mt-3">
+                            <div class="alert alert-success mx-auto col-6">
+                                カートに追加しました
+                                <a href="/HEW/cart/" class="btn btn-link">カートへ</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } elseif ($_REQUEST['cart_action'] == 'delete') { ?>
+                        <div class="row justify-content-center mt-3">
+                            <div class="alert alert-success mx-auto col-6">
+                                カートから削除しました
+                            </div>
+                        </div>
+
             <?php
+                    }
                 }
             } ?>
 

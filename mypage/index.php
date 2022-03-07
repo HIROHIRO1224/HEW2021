@@ -95,7 +95,7 @@ try {
             <!-- この下の行に mr-auto クラスを付与するだけ -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./search.php">Search</a>
+                    <a class="nav-link" href="/HEW/search.php">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>

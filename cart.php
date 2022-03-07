@@ -69,7 +69,7 @@ try {
             } else {
                 $result = 'miss';
             }
-            header("Location: {$_REQUEST['sender']}?cart_result={$result}");
+            header("Location: {$_REQUEST['sender']}?cart_result={$result}&cart_action=add");
             exit();
         } elseif ($_REQUEST['action'] == 'delete') {
             echo "消す処理";
@@ -87,7 +87,7 @@ try {
                     } else {
                         $result = 'miss';
                     }
-                    header("Location: {$_REQUEST['sender']}?cart_result={$result}");
+                    header("Location: {$_REQUEST['sender']}?cart_result={$result}&cart_action=delete");
                     exit();
                 }
             }

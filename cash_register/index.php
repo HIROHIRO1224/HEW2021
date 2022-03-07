@@ -227,7 +227,7 @@ try {
 
               <div class="card">
                 <div class="img-box">
-                  <img src="/HEW/img/item/<?php echo h($cart_item['item_image']) ?>" alt="Green tomatoes" width="80px" class="product-img">
+                  <img src="/HEW/itempage/item<?php echo h($cart_item['item_id']) ?>/img/<?php echo h($cart_item['item_image']) ?>" alt="Green tomatoes" width="80px" class="product-img">
                 </div>
 
                 <div class="detail">

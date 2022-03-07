@@ -6,6 +6,7 @@ include_once '../../mod/LoginClass.php';
 include_once '../../mod/module.php';
 
 $user = 'guest';
+
 try {
     //code...
     $dba = new DBA('root', '', 'HEW', 'localhost');
@@ -29,9 +30,8 @@ try {
         $columns = $dba->SELECT('t_users', DBA::ALL, DBA::NUMVALUE, $condition, $params);
         $user = $columns[0];
     }
-    $column = [];
+    $columns = '';
     $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [4]);
-
     // 追加部分
     $user_cart = explode(',', $user['user_cart']);
     $user_purchased = explode(',', $user['user_purchased']);
@@ -79,7 +79,7 @@ try {
         'item_status' => $status,
     ];
 
-    // 追加部分終わり
+    // 追加部分終わり    
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
@@ -90,7 +90,10 @@ try {
 <html lang="ja">
 
 <head>
-    <title>Playground</title>
+
+    <!-- ここに商品名 -->
+    <title>FORTNITE</title>
+
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -122,7 +125,7 @@ try {
             <!-- この下の行に mr-auto クラスを付与するだけ -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./search.php">Search</a>
+                    <a class="nav-link" href="/HEW/search.php">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -136,11 +139,10 @@ try {
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a href="/HEW/mypage/" class="dropdown-item">ユーザー設定</a>
-                            <a class="dropdown-item" href="/HEW/cart/">カート</a>
-                            <a class="dropdown-item text-dark" href="/HEW/mypage/purchased.php">購入済み</a>
+                            <a class="dropdown-item" href="/HEW/cart/">cart</a>
+                            <a class="dropdown-item" href="#">setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="/HEW/login/logout.php">ログアウト</a>
+                            <a class="dropdown-item" href="./login/logout.php">logout</a>
                         </div>
                     </li>
                 <?php else : ?>
@@ -168,62 +170,65 @@ try {
                 }
             } ?>
             <!-- 追加部分　終わり -->
-            <div class="row justify-content-left">
-                <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
-            </div>
-            <div class="row justify-content-center">
-                <img class="img-fluid col-3 mx-3" src="./img/<?php echo h($column['item_image']) ?>" alt="">
-                <div class="col-6 row mx-3">
-                    <h2 class="font-weight-bold col-12"><?php echo h($column['item_name']) ?></h2>
-                    <h6 class="col-12"><?php echo h($column['item_corporate']) ?></h6>
-                    <h6 class="col-12"><?php echo h($column['item_category']) ?></h6>
-                    <h4 class="col-6">☆ <?php echo h($column['item_sold']) ?></h4>
-                    <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
-                    <div class="col-3 mx-5">
-                        <?php if ($column['item_status'] == 'cart_in') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
-                        <?php elseif ($column['item_status'] == 'purchased') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
-                        <?php elseif ($column['item_status'] == '') : ?>
-                            <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
-                        <?php endif; ?>
-
-                    </div>
-
+            <div class="container-fluid my-4">
+                <div class="row justify-content-left">
+                    <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
                 </div>
-                <hr class="col-11">
-                <h2 class="font-weight-bold col-11">商品説明</h2>
-                <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    パズルゲームの大定番がついに登場！！
-                </h3>
-                <img class="col-8 my-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
-                <p class="col-9" style="line-height:2rem">
-                    ごく普通の学校に通う学生が、授業の片手間に作り上げたパズルゲーム<br>
-                    UIはシンプルで操作性も抜群<br>
-                    楽しく、快適に遊べるTETRIS
-                </p>
-                <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    webブラウザに完全対応
-                </h3>
-                <img class="col-8 my-3" src="./img/9fd768a1-fa6b-4995-884f-af703119cff6.__CR174,0,1746,1080_PT0_SX970_V1___.jpg" alt="">
-                <p class="col-9" style="line-height:2rem">
-                    Google Chromeに完全対応したことにより、<br>
-                    WindowsやMac、LinuxやChrome OSのクロスプラットフォームで遊べるようになりました<br>
-                    もうこれで、あなたの好きなPCで好きな時にどこでも遊べる！(ネット環境必須)
-                </p>
-                <h3 class="col-9 mt-5 font-weight-bold mb-3">
-                    フリープログラミング
-                </h3>
-                <img class="col-8 my-3" src="./img/e81e64d4-6a21-4f8c-90f3-73b7e37830eb.__CR61,0,1164,720_PT0_SX970_V1___.jpg" alt="">
-                <p class="col-9" style="line-height:2rem">
-                    「フリープログラミング」で自由にゲームづくり<br>
-                    「フリープログラミング」では、「ナビつきレッスン」で身に着けたテクニックを使って、<br>
-                    自分で描いたキャラクターを操作できるようにしたり、絵を描いて背景にしたり、BGMをつけたりと、<br>
-                    自由にゲームをプログラミングすることができます。<br>
-                    また、つくったゲームはインターネットやローカル通信で友だちに共有することもできます。<br>
-                </p>
+                <div class="row justify-content-center">
+                    <img class="img-fluid col-3 mx-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
+                    <div class="col-6 row mx-3">
+                        <h2 class="font-weight-bold col-12"><?php echo h($column['item_name']) ?></h2>
+                        <h6 class="col-12"><?php echo h($column['item_corporate']) ?></h6>
+                        <h6 class="col-12"><?php echo h($column['item_category']) ?></h6>
+                        <h4 class="col-6">☆ <?php echo h($column['item_sold']) ?></h4>
+                        <h4 class="col-1">￥<?php echo h($column['item_price']) ?></h4>
+                        <div class="col-3 mx-5">
+                            <?php if ($column['item_status'] == 'cart_in') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
+                            <?php elseif ($column['item_status'] == 'purchased') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-success disabled">購入済み</a>
+                            <?php elseif ($column['item_status'] == '') : ?>
+                                <a href="/HEW/cart.php?action=add&sender=/HEW/itempage/item<?php echo h($column['item_id']) ?>/&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary">カートに入れる</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <hr class="col-11">
+                    <h2 class="font-weight-bold col-11">商品説明</h2>
+
+                    <!-- ここから編集部分 -->
+                    <h3 class="col-9 mt-5 font-weight-bold mb-3">
+                        シーズン1
+                    </h3>
+                    <img class="col-8 my-3" src="./img/15BPL_YouTube_Cover-770x434.jpg" alt="">
+                    <p class="col-9" style="line-height:2rem">
+                        君が見知った島は、文字通りにひっくり返されてしまった…フォートナイト チャプター3 - シーズン1: フリップで新たな島に足を踏み入れ、未踏の地を探索しよう。<br>
+                        あのデイリー・ビューグルでスイングしたり、ファウンデーションとセブンの拠点であるサンクチュアリにスライディングで移動したりしよう。今度はセブンの力となり、かつては凍りついていた注目スポットや危険な気候条件に満ちた島で腕試しして、避けられぬイマジンドオーダーとの戦いに備えるのだ。それに加え、バトルロイヤル外でのバトルパスXP獲得、スパイダーマンやファウンデーション、そして多数の新規ビジュアルアイテムのバトルパスでのアンロックなど新要素もたっぷり。<br>
+                        あちら側で会おう！
+                    </p>
+
+
+                    <h3 class="col-9 mt-5 font-weight-bold mb-3">
+                        戦闘。建築。クリエイト
+                    </h3>
+                    <img class="col-8 my-3" src="./img/fortnite2.jpg" alt="">
+                    <p class="col-9" style="line-height:2rem">
+                        フォートナイトは自由にプレイでき、常に進化を続けています。フレンドとバトルロイヤルしたり、理想のフォートナイトの世界を一緒に作ったりすることができるマルチプレイヤーゲームです。「バトルロイヤル」と『フォートナイト』のクリエイティブビルダは両方とも無料でプレイ可能。今すぐダウンロードしてバトルに飛び込みましょう。ダウンロードが完了後は、PvE協力モードの「世界を救え」を購入することもできます。
+                    </p>
+
+
+                    <h3 class="col-9 mt-5 font-weight-bold mb-3">
+                        追加コンテンツ
+                    </h3>
+                    <img class="col-8 my-3" src="./img/fortnite3.jpg" alt="">
+                    <p class="col-9" style="line-height:2rem">
+                        フォートナイトクルーは、絶対に手に入れたいフォートナイトのコンテンツがもらえる究極の月額課金サービスです！毎月、$11.99で以下のものをすべてゲットできます。<br>
+                        • シーズン期間全体を通してのバトルパスへのアクセス権 - フォートナイトクルーのメンバーであれば、現行シーズンのバトルパスをいつでも利用できます！<br>
+                        • 毎月1,000 V-Bucks - フォートナイトクルーのメンバーは、毎月1,000 V-Bucksを受け取ることができます。アイテムショップでお気に入りのアイテムを購入しましょう！<br>
+                        • マンスリークルー パック！ - 限定のフォートナイトクルー パックを受け取れます。フォートナイトクルーのメンバー限定の、必ず新規コンテンツが含まれるコスチュームバンドルです。<br>
+                        解約するまでは継続的に月額課金が発生します。キャンセルはいつでも可能です。
+                    </p>
+                </div>
             </div>
-        </div>
     </main>
 
     <!-- Footer section -->
