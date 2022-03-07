@@ -58,7 +58,7 @@ try {
     $item_recommend = [];
     for ($i = 0; $i < 3; $i++) {
         # code...
-        $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [rand(1, 8)]);
+        $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [rand(1, 42)]);
         $t_item = $columns[0];
 
         $status = '';
@@ -193,7 +193,7 @@ try {
 
                             <div class="col-11 mb-3 row justify-content-center ml-5">
                                 <div class="row col-12 py-4 border rounded mb-1">
-                                    <img class="img-fluid col-4" src="/HEW/img/item/<?php echo h($item_purchased[$i]['item_image']) ?>" alt="">
+                                    <img class="img-fluid col-4" src="/HEW/itempage/item<?php echo h($item_purchased[$i]['item_id']) ?>/img/<?php echo h($item_purchased[$i]['item_image']) ?>" alt="">
                                     <div class="col-6 row">
                                         <a href="<?php echo h($item_purchased[$i]['item_url']); ?>/">
                                             <h4 class="col-12 py-3"><?php echo h($item_purchased[$i]['item_name']) ?></h4>
@@ -212,7 +212,7 @@ try {
                     <div class="row my-3 col-12 justify-content-center float-left">
                         <h4 class="col-12 text-center font-weight-bold mt-5 mb-3">おすすめ商品</h4>
                         <div class="card mx-3 mb-5" style="width: 18rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
+                            <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]["item_id"]) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate">
                                     <a href="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']); ?>/">
@@ -231,7 +231,7 @@ try {
                             </div>
                         </div>
                         <div class="card mx-3 mb-5" style="width: 18rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
+                            <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]["item_id"]) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate">
                                     <a href="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']); ?>/">
@@ -250,7 +250,7 @@ try {
                             </div>
                         </div>
                         <div class="card mx-3 mb-5" style="width: 18rem;">
-                            <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                            <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]["item_id"]) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate">
                                     <a href="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']); ?>/">
@@ -285,7 +285,7 @@ try {
                         <div class="row my-3 col-12 justify-content-center float-center">
                             <h4 class="col-12 text-center font-weight-bold mt-5 mb-3">おすすめ商品</h4>
                             <div class="card mx-3 mb-5" style="width: 15rem;">
-                                <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
+                                <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title text-truncate">
                                         <?php echo h($item_recommend[0]['item_name']) ?>
@@ -296,7 +296,7 @@ try {
                                 </div>
                             </div>
                             <div class="card mx-3 mb-5" style="width: 15rem;">
-                                <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
+                                <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title text-truncate">
                                         <?php echo h($item_recommend[1]['item_name']) ?>
@@ -307,7 +307,7 @@ try {
                                 </div>
                             </div>
                             <div class="card mx-3 mb-5" style="width: 15rem;">
-                                <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                                <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title text-truncate">
                                         <?php echo h($item_recommend[2]['item_name']) ?>

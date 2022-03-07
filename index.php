@@ -40,7 +40,7 @@ try {
 <html lang="ja">
 
 <head>
-	<title>Game Shop</title>
+	<title>Playground</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Game Warrior Template">
 	<meta name="keywords" content="warrior, game, creative, html">
@@ -117,10 +117,11 @@ try {
 				<div class="hs-text">
 					<div class="container">
 						<h2>最高の <span>ゲーム</span>がそこにある</h2>
-						<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル <br> サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル
-							<br>サンプルサンプルサンプルサンプルサンプル
-						</p>
-						<a href="#" class="site-btn">もっと見る</a>
+						<p>
+							あなたの遊んだことや見たことのない最高のゲームたちが、 <br>
+							あなたの好きな時に好きな場所、<br>
+							あなたの愛用しているデバイスで </p>
+						<a href="/HEW/search.php" class="site-btn">もっと見る</a>
 					</div>
 				</div>
 			</div>
@@ -128,9 +129,12 @@ try {
 				<div class="hs-text">
 					<div class="container">
 						<h2>最高の <span>ゲーム</span> がそこにある</h2>
-						<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル <br>
-							サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル<br>サンプルサンプルサンプルサンプルサンプル</p>
-						<a href="#" class="site-btn">もっと見る</a>
+						<p>
+							あなたの遊んだことや見たことのない最高のゲームたちが、 <br>
+							あなたの好きな時に好きな場所、<br>
+							あなたの愛用しているデバイスで
+						</p>
+						<a href="/HEW/search.php" class="site-btn">もっと見る</a>
 					</div>
 				</div>
 			</div>
@@ -144,9 +148,9 @@ try {
 		<div class="ln-title">最新ニュース</div>
 		<div class="news-ticker">
 			<div class="news-ticker-contant">
-				<div class="nt-item"><span class="new">new</span>サンプルサンプルサンプルサンプルサンプル </div>
-				<div class="nt-item"><span class="strategy">strategy</span>サンプルサンプルサンプルサンプルサンプル </div>
-				<div class="nt-item"><span class="racing">racing</span>サンプルサンプルサンプルサンプルサンプル </div>
+				<div class="nt-item"><span class="new">new</span>　APEX -LEGENDS-　新ステージ追加 </div>
+				<div class="nt-item"><span class="strategy">strategy</span>イベント限定アイテム、多数収録 </div>
+				<div class="nt-item"><span class="racing">racing</span>　ASPHALT 8　超巨大レーストーナメント エントリー開始！！！ </div>
 			</div>
 		</div>
 	</div>
@@ -162,8 +166,8 @@ try {
 						<span class="cata new">new</span>
 						<div class="fi-content text-white">
 							<h5><a href="#">新キャラ追加！！！</a></h5>
-							<p>サンプルサンプルサンプルサンプルサンプル</p>
-							<a href="#" class="fi-comment">? コメント</a>
+							<p>イベントストーリーを進めて仲間にしよう！</p>
+							<a href="#" class="fi-comment">32 コメント</a>
 						</div>
 					</div>
 				</div>
@@ -172,8 +176,8 @@ try {
 						<span class="cata strategy">strategy</span>
 						<div class="fi-content text-white">
 							<h5><a href="#">新イベント登場！！</a></h5>
-							<p>サンプルサンプルサンプルサンプルサンプル </p>
-							<a href="#" class="fi-comment">? コメント</a>
+							<p>季節限定のキャラ、アイテムが多数追加！！ </p>
+							<a href="#" class="fi-comment">47 コメント</a>
 						</div>
 					</div>
 				</div>
@@ -182,8 +186,8 @@ try {
 						<span class="cata new">new</span>
 						<div class="fi-content text-white">
 							<h5><a href="#">新シーズンスタート</a></h5>
-							<p>サンプルサンプルサンプルサンプルサンプル </p>
-							<a href="#" class="fi-comment">? コメント</a>
+							<p>他の人とチームを組んでみんなで生き残ろう</p>
+							<a href="#" class="fi-comment">26 コメント</a>
 						</div>
 					</div>
 				</div>
@@ -192,8 +196,8 @@ try {
 						<span class="cata racing">racing</span>
 						<div class="fi-content text-white">
 							<h5><a href="#">新マップ追加</a></h5>
-							<p>サンプルサンプルサンプルサンプルサンプル </p>
-							<a href="#" class="fi-comment">? コメント</a>
+							<p>春をモチーフにした建物などがあるマップで争おう！</p>
+							<a href="#" class="fi-comment">33 コメント</a>
 						</div>
 					</div>
 				</div>
@@ -208,7 +212,7 @@ try {
 		<div class="container">
 			<div class="section-title">
 				<div class="cata new">new</div>
-				<h2>最新のゲーム</h2>
+				<h2 style="color: white;">最新のゲーム</h2>
 			</div>
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
@@ -218,8 +222,8 @@ try {
 						</div>
 						<div class="rgi-content">
 							<h5>ApexLegends</h5>
-							<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル </p>
-							<a href="#" class="comment">? コメント</a>
+							<p>新シリーズ開幕</p>
+							<a href="#" class="comment">512 コメント</a>
 							<div class="rgi-extra">
 								<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 								<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -234,8 +238,8 @@ try {
 						</div>
 						<div class="rgi-content">
 							<h5>グランツーリスモ</h5>
-							<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-							<a href="#" class="comment">? コメント</a>
+							<p>新しいステージが間も無く登場</p>
+							<a href="#" class="comment">156 コメント</a>
 							<div class="rgi-extra">
 								<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 								<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -250,8 +254,8 @@ try {
 						</div>
 						<div class="rgi-content">
 							<h5>Halo</h5>
-							<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-							<a href="#" class="comment">? コメント</a>
+							<p>期間限定キャラクター参戦</p>
+							<a href="#" class="comment">56 コメント</a>
 							<div class="rgi-extra">
 								<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 								<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
@@ -380,7 +384,7 @@ try {
 				<div class="col-lg-4">
 					<div class="footer-logo text-white">
 						<img src="img/footer-logo.png" alt="">
-						<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+						<h3>その他コメントや記事</h3>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
@@ -391,7 +395,7 @@ try {
 								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/1.jpg"></div>
 								<div class="lb-content">
 									<div class="lb-date">2022年 7月10日</div>
-									<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+									<p>初心者におすすめな武器、防具、立ち回りなど</p>
 									<a href="#" class="lb-author">By SampleMan</a>
 								</div>
 							</div>
@@ -399,7 +403,7 @@ try {
 								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/2.jpg"></div>
 								<div class="lb-content">
 									<div class="lb-date">2022年 7月10日</div>
-									<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+									<p>【最新】おすすめのゲームをランキング形式でご紹介</p>
 									<a href="#" class="lb-author">By SampleMan</a>
 								</div>
 							</div>
@@ -407,7 +411,7 @@ try {
 								<div class="lb-thumb set-bg" data-setbg="img/latest-blog/3.jpg"></div>
 								<div class="lb-content">
 									<div class="lb-date">2022年 7月10日</div>
-									<p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+									<p>ゲームキャラ最強ランキング（2022年7月10日　現在）</p>
 									<a href="#" class="lb-author">By SampleMan</a>
 								</div>
 							</div>
@@ -421,28 +425,28 @@ try {
 							<div class="tc-item">
 								<div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
 								<div class="tc-content">
-									<p><a href="#">SampleMan</a> <span>on</span> サンプルサンプルサンプルサンプル</p>
+									<p><a href="#">BANANA</a> <span>on</span> これは最高のゲームだ</p>
 									<div class="tc-date">2022年 7月10日</div>
 								</div>
 							</div>
 							<div class="tc-item">
 								<div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
 								<div class="tc-content">
-									<p><a href="#">SampleMan</a> <span>on</span> サンプルサンプルサンプルサンプル</p>
+									<p><a href="#">ChangeMan</a> <span>on</span> 裏技発見www(ネタバレ注意)...</p>
 									<div class="tc-date">2022年 7月10日</div>
 								</div>
 							</div>
 							<div class="tc-item">
 								<div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
 								<div class="tc-content">
-									<p><a href="#">SampleMan</a> <span>on</span> サンプルサンプルサンプルサンプル</p>
+									<p><a href="#">Nobita</a> <span>on</span>遊びすぎて次の朝を迎えてしまった</p>
 									<div class="tc-date">2022年 7月10日</div>
 								</div>
 							</div>
 							<div class="tc-item">
 								<div class="tc-thumb set-bg" data-setbg="img/authors/4.jpg"></div>
 								<div class="tc-content">
-									<p><a href="#">SampleMan</a> <span>on</span> サンプルサンプルサンプルサンプル</p>
+									<p><a href="#">Steven</a> <span>on</span> サンプルサンプルサンプルサンプル</p>
 									<div class="tc-date">2022年 7月10日</div>
 								</div>
 							</div>

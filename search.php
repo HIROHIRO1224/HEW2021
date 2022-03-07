@@ -38,6 +38,12 @@ try {
     $user_cart = explode(',', $user['user_cart']);
     $user_purchased = explode(',', $user['user_purchased']);
 
+    if (!empty($_REQUEST)) {
+        if (!empty($_REQUEST['search_keyword'])) {
+            $_POST['item_name'] = $_REQUEST['search_keyword'];
+        }
+    }
+
     if (!empty($_POST)) {
         # code...
         $condition = "item_name like ? or item_category like ? or item_corporate like ?;";
@@ -240,14 +246,14 @@ try {
             <div class="row justify-content-center">
 
                 <?php foreach ($columns as $column) : ?>
-                    <div class="card mx-4 mb-5 rounded" style="width: 16rem;">
-                        <img class="card-img-top rounded-top" src="./img/item/<?php echo h($column['item_image']) ?>" alt="Card image cap">
+                    <div class="card mx-4 mb-5 rounded h-100" style="width: 16rem;">
+                        <img class="card-img-top rounded-top" src="/HEW/itempage/item<?php echo h($column['item_id']) ?>/img/<?php echo h($column['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <a href="/HEW/itempage/item<?php echo h($column['item_id']) ?>/" class="text-dark">
                                 <h5 class="card-title text-truncate"><?php echo h($column['item_name']) ?></h5>
                             </a>
                             <p class="card-text"><?php echo h($column['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($column['item_price']) ?></p>
+                            <p class="card-text">￥<?php echo h(number_format($column['item_price'])) ?></p>
                             <?php if ($column['item_status'] == 'cart_in') : ?>
                                 <a href="/HEW/cart.php?action=add&sender=/HEW/search.php&item_id=<?php echo h($column["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($column['item_status'] == 'purchased') : ?>

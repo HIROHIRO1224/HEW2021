@@ -32,7 +32,7 @@ try {
     $column = [];
     $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [1]);
 
-
+    // 追加部分
     $user_cart = explode(',', $user['user_cart']);
     $user_purchased = explode(',', $user['user_purchased']);
 
@@ -78,6 +78,8 @@ try {
         'item_registered' => $columns[0]['item_registered'],
         'item_status' => $status,
     ];
+
+    // 追加部分終わり
 } catch (PDOException $e) {
     throw $e->getMessage();
 }
@@ -150,6 +152,7 @@ try {
     </nav>
 
     <main>
+        <!-- 追加部分 -->
         <div class="container-fluid my-5">
             <?php if (!empty($_REQUEST['cart_result'])) {
                 if ($_REQUEST['cart_result'] == 'success') {
@@ -164,12 +167,12 @@ try {
             <?php
                 }
             } ?>
-
+            <!-- 追加部分　終わり -->
             <div class="row justify-content-left">
                 <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
             </div>
             <div class="row justify-content-center">
-                <img class="img-fluid col-3 mx-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
+                <img class="img-fluid col-3 mx-3" src="./img/<?php echo h($column['item_image']) ?>" alt="">
                 <div class="col-6 row mx-3">
                     <h2 class="font-weight-bold col-12"><?php echo h($column['item_name']) ?></h2>
                     <h6 class="col-12"><?php echo h($column['item_corporate']) ?></h6>
@@ -193,32 +196,32 @@ try {
                 <h3 class="col-9 mt-5 font-weight-bold mb-3">
                     パズルゲームの大定番がついに登場！！
                 </h3>
-                <img class="col-8 my-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
+                <img class="col-8 my-3" src="./img/webtetris_1.png" alt="">
                 <p class="col-9" style="line-height:2rem">
                     ごく普通の学校に通う学生が、授業の片手間に作り上げたパズルゲーム<br>
                     UIはシンプルで操作性も抜群<br>
-                    楽しく、快適に遊べるTETRIS
+                    楽しく、快適に遊べるTETRISがここに誕生！
                 </p>
                 <h3 class="col-9 mt-5 font-weight-bold mb-3">
                     webブラウザに完全対応
                 </h3>
-                <img class="col-8 my-3" src="./img/9fd768a1-fa6b-4995-884f-af703119cff6.__CR174,0,1746,1080_PT0_SX970_V1___.jpg" alt="">
+                <img class="col-8 my-3" src="./img/webtetris_2.png" alt="">
                 <p class="col-9" style="line-height:2rem">
                     Google Chromeに完全対応したことにより、<br>
                     WindowsやMac、LinuxやChrome OSのクロスプラットフォームで遊べるようになりました<br>
                     もうこれで、あなたの好きなPCで好きな時にどこでも遊べる！(ネット環境必須)
                 </p>
-                <h3 class="col-9 mt-5 font-weight-bold mb-3">
+                <!-- <h3 class="col-9 mt-5 font-weight-bold mb-3">
                     フリープログラミング
                 </h3>
-                <img class="col-8 my-3" src="./img/e81e64d4-6a21-4f8c-90f3-73b7e37830eb.__CR61,0,1164,720_PT0_SX970_V1___.jpg" alt="">
+                <img class="col-8 my-3" src="./img/webtetris_2.png" alt="">
                 <p class="col-9" style="line-height:2rem">
                     「フリープログラミング」で自由にゲームづくり<br>
                     「フリープログラミング」では、「ナビつきレッスン」で身に着けたテクニックを使って、<br>
                     自分で描いたキャラクターを操作できるようにしたり、絵を描いて背景にしたり、BGMをつけたりと、<br>
                     自由にゲームをプログラミングすることができます。<br>
                     また、つくったゲームはインターネットやローカル通信で友だちに共有することもできます。<br>
-                </p>
+                </p> -->
             </div>
         </div>
     </main>

@@ -89,7 +89,7 @@ try {
 <html lang="ja">
 
 <head>
-    <title>Playground</title>
+    <title>ナビつき! つくってわかる はじめてゲームプログラミング</title>
     <meta charset="UTF-8">
     <meta name="description" content="Game Warrior Template">
     <meta name="keywords" content="warrior, game, creative, html">
@@ -172,7 +172,7 @@ try {
                 <a class="col-2 font-weight-bold btn btn-link mb-3" href="/HEW/search.php">＜ 戻る</a>
             </div>
             <div class="row justify-content-center">
-                <img class="img-fluid col-3 mx-3" src="/HEW/img/item/<?php echo h($column['item_image']) ?>" alt="">
+                <img class="img-fluid col-3 mx-3" src="./img/<?php echo h($column['item_image']) ?>" alt="">
                 <div class="col-6 row mx-3">
                     <h2 class="font-weight-bold col-12"><?php echo h($column['item_name']) ?></h2>
                     <h6 class="col-12"><?php echo h($column['item_corporate']) ?></h6>

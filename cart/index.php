@@ -51,7 +51,7 @@ try {
     $item_recommend = [];
     for ($i = 0; $i < 3; $i++) {
         # code...
-        $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [rand(1, 8)]);
+        $columns = $dba->SELECT('t_items', DBA::ALL, DBA::NUMVALUE, 'item_id = ?', [rand(1, 42)]);
         $t_item = $columns[0];
 
         $status = '';
@@ -199,7 +199,7 @@ try {
 
                         <div class="col-11 mb-3 row justify-content-center ml-5">
                             <div class="row col-12 py-4 border rounded mb-1">
-                                <img class="img-fluid col-4" src="/HEW/img/item/<?php echo h($t_items[$cart[$i] - 1]['item_image']) ?>" alt="">
+                                <img class="img-fluid col-4" src="/HEW/itempage/item<?php echo h($t_items[$cart[$i] - 1]['item_id']) ?>/img/<?php echo h($t_items[$cart[$i] - 1]['item_image']) ?>" alt="">
                                 <div class="col-6 row">
                                     <a href="/HEW/itempage/item<?php echo h($t_items[$cart[$i] - 1]['item_id']); ?>/">
                                         <h4 class="col-12 py-3"><?php echo h($t_items[$cart[$i] - 1]['item_name']) ?></h4>
@@ -207,7 +207,7 @@ try {
                                     <h6 class="col-12 mx-auto"><?php echo h($t_items[$cart[$i] - 1]['item_corporate']) ?></h6>
                                 </div>
                                 <div class="col-1 py-3">
-                                    <h5>￥<?php echo h($t_items[$cart[$i] - 1]['item_price']) ?></h5>
+                                    <h5>￥<?php echo h(number_format($t_items[$cart[$i] - 1]['item_price'])) ?></h5>
                                 </div>
                                 <button type="button" class="close col-1 ml-auto" data-toggle="modal" data-target="#item_id<?php echo h($t_items[$cart[$i] - 1]['item_id']) ?>">
                                     <span aria-hidden="true">&times;</span>
@@ -220,7 +220,7 @@ try {
                 <div class="justify-content-center float-left col-3 p-3 border ml-5 mt-5">
                     <div class="col-12">
                         <h6 class="">小計 (<?php echo h(count($cart)) ?>個の商品) (税込)</h6>
-                        <h2 class="font-weight-bold">￥<?php echo h($total_price); ?></h4>
+                        <h2 class="font-weight-bold">￥<?php echo h(number_format($total_price)); ?></h4>
                     </div>
                     <hr class="col-10">
                     <a href="/HEW/cash_register/" class="col-12 btn btn-primary">
@@ -232,7 +232,7 @@ try {
                 <div class="row my-3 col-12 justify-content-center float-left">
                     <h4 class="col-12 text-center font-weight-bold mt-5 mb-3">おすすめ商品</h4>
                     <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]["item_id"]) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
                                 <a href="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']); ?>/">
@@ -240,7 +240,7 @@ try {
                                 </a>
                             </h5>
                             <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
+                            <p class="card-text">￥<?php echo h(number_format($item_recommend[0]['item_price'])) ?></p>
                             <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
                                 <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
@@ -251,7 +251,7 @@ try {
                         </div>
                     </div>
                     <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]["item_id"]) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
                                 <a href="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']); ?>/">
@@ -259,7 +259,7 @@ try {
                                 </a>
                             </h5>
                             <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
+                            <p class="card-text">￥<?php echo h(number_format($item_recommend[1]['item_price'])) ?></p>
                             <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
                                 <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
@@ -270,7 +270,7 @@ try {
                         </div>
                     </div>
                     <div class="card mx-3 mb-5" style="width: 18rem;">
-                        <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]["item_id"]) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
                                 <a href="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']); ?>/">
@@ -278,7 +278,7 @@ try {
                                 </a>
                             </h5>
                             <p class=""><?php echo h($item_recommend[2]['item_category']) ?></p>
-                            <p class="card-text">￥<?php echo h($item_recommend[2]['item_price']) ?></p>
+                            <p class="card-text">￥<?php echo h(number_format($item_recommend[2]['item_price'])) ?></p>
                             <?php if ($item_recommend[2]['item_status'] == 'cart_in') : ?>
                                 <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[2]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                             <?php elseif ($item_recommend[2]['item_status'] == 'purchased') : ?>
@@ -310,7 +310,7 @@ try {
             <div class="row my-3 col-12 justify-content-center">
                 <h4 class="col-12 text-center font-weight-bold">おすすめ商品</h4>
                 <div class="card mx-3 mb-5" style="width: 15rem;">
-                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
+                    <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]["item_id"]) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">
                             <a href="/HEW/itempage/item<?php echo h($item_recommend[0]['item_id']); ?>/">
@@ -318,7 +318,7 @@ try {
                             </a>
                         </h5>
                         <p class=""><?php echo h($item_recommend[0]['item_category']) ?></p>
-                        <p class="card-text">￥<?php echo h($item_recommend[0]['item_price']) ?></p>
+                        <p class="card-text">￥<?php echo h(number_format($item_recommend[0]['item_price'])) ?></p>
                         <?php if ($item_recommend[0]['item_status'] == 'cart_in') : ?>
                             <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[0]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($item_recommend[0]['item_status'] == 'purchased') : ?>
@@ -329,7 +329,7 @@ try {
                     </div>
                 </div>
                 <div class="card mx-3 mb-5" style="width: 15rem;">
-                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
+                    <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]["item_id"]) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">
                             <a href="/HEW/itempage/item<?php echo h($item_recommend[1]['item_id']); ?>/">
@@ -337,7 +337,7 @@ try {
                             </a>
                         </h5>
                         <p class=""><?php echo h($item_recommend[1]['item_category']) ?></p>
-                        <p class="card-text">￥<?php echo h($item_recommend[1]['item_price']) ?></p>
+                        <p class="card-text">￥<?php echo h(number_format($item_recommend[1]['item_price'])) ?></p>
                         <?php if ($item_recommend[1]['item_status'] == 'cart_in') : ?>
                             <a href="/HEW/cart.php?action=add&sender=/HEW/cart/&item_id=<?php echo h($item_recommend[1]["item_id"]) ?>" class="btn btn-primary disabled">追加済み</a>
                         <?php elseif ($item_recommend[1]['item_status'] == 'purchased') : ?>
@@ -348,10 +348,10 @@ try {
                     </div>
                 </div>
                 <div class="card mx-3 mb-5" style="width: 15rem;">
-                    <img class="card-img-top" src="/HEW/img/item/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
+                    <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]["item_id"]) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">
-                            <a href="/HEW/itempage/item<?php echo h($item_recommend[2]['item_id']); ?>/">
+                            <a href="/HEW/itempage/item<?php echo h(number_format($item_recommend[2]['item_id'])); ?>/">
                                 <?php echo h($item_recommend[2]['item_name']) ?>
                             </a>
                         </h5>
