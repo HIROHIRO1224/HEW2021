@@ -72,7 +72,7 @@ if (!empty($_POST)) {
 
                         <div class="mb-3">
                             <label for="user_data" class="form-label">ユーザー名もしくはメールアドレス</label>
-                            <input type="text" name="user_data" id="user_data" class="form-control" value="<? if (!empty($_POST['user_data'])) echo $_POST["user_data"]; ?>">
+                            <input type="text" name="user_data" id="user_data" class="form-control" value="<?php if (!empty($_POST['user_data'])) echo $_POST["user_data"]; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">パスワード</label>

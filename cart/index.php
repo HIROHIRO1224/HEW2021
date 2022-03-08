@@ -207,8 +207,8 @@ try {
 
                     <?php for ($i = 0; $i < count($cart); $i++) : ?>
 
-                        <div class="col-11 mb-3 row justify-content-center ml-5">
-                            <div class="row col-12 py-4 border rounded mb-1">
+                        <div class="col-12 mb-3 row justify-content-center ml-5">
+                            <div class="row col-12 py-3 border rounded mb-1">
                                 <img class="img-fluid col-4" src="/HEW/itempage/item<?php echo h($t_items[$cart[$i] - 1]['item_id']) ?>/img/<?php echo h($t_items[$cart[$i] - 1]['item_image']) ?>" alt="">
                                 <div class="col-6 row">
                                     <a href="/HEW/itempage/item<?php echo h($t_items[$cart[$i] - 1]['item_id']); ?>/">
@@ -241,7 +241,7 @@ try {
 
                 <div class="row my-3 col-12 justify-content-center float-left">
                     <h4 class="col-12 text-center font-weight-bold mt-5 mb-3">おすすめ商品</h4>
-                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                    <div class="card mx-3 mb-5" style="width: 15rem;">
                         <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]["item_id"]) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
@@ -260,7 +260,7 @@ try {
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                    <div class="card mx-3 mb-5" style="width: 15rem;">
                         <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]["item_id"]) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
@@ -279,7 +279,7 @@ try {
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="card mx-3 mb-5" style="width: 18rem;">
+                    <div class="card mx-3 mb-5" style="width: 15rem;">
                         <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]["item_id"]) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-truncate">
@@ -319,7 +319,7 @@ try {
             </div>
             <div class="row my-3 col-12 justify-content-center">
                 <h4 class="col-12 text-center font-weight-bold">おすすめ商品</h4>
-                <div class="card mx-3 mb-5" style="width: 15rem;">
+                <div class="card mx-3 mb-5" style="width: 12rem;">
                     <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[0]["item_id"]) ?>/img/<?php echo h($item_recommend[0]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">
@@ -338,7 +338,7 @@ try {
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="card mx-3 mb-5" style="width: 15rem;">
+                <div class="card mx-3 mb-5" style="width: 12rem;">
                     <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[1]["item_id"]) ?>/img/<?php echo h($item_recommend[1]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">
@@ -357,7 +357,7 @@ try {
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="card mx-3 mb-5" style="width: 15rem;">
+                <div class="card mx-3 mb-5" style="width: 12rem;">
                     <img class="card-img-top" src="/HEW/itempage/item<?php echo h($item_recommend[2]["item_id"]) ?>/img/<?php echo h($item_recommend[2]['item_image']) ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title text-truncate">

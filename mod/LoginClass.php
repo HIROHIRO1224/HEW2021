@@ -48,7 +48,7 @@ class LoginClass
         try {
             $dba = new DBA("root", "", "HEW", "localhost");
 
-            $params = ["user_name" => $name, "user_tname" => $truename, "user_pwd" => $pwd, "user_email" => $mailAddress];
+            $params = ["user_name" => $name, "user_tname" => $truename, "user_pwd" => $pwd, "user_email" => $mailAddress, "user_card_limit" => ''];
 
             $result = $dba->INSERT("t_users", $params);
             return $result;

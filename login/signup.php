@@ -57,7 +57,7 @@ if (!empty($_POST)) {
 
 <body>
 
-    <div class="bg-image pt-5" style="background-image: url('./img/sean-do-EHLd2utEf68-unsplash.jpg'); background-size:cover; background-repeat:no-repeat; height:100vh">
+    <div class="bg-image pt-4" style="background-image: url('./img/sean-do-EHLd2utEf68-unsplash.jpg'); background-size:cover; background-repeat:no-repeat; height:100vh">
 
         <?php if ($result) : ?>
             <div class="container">
@@ -86,7 +86,7 @@ if (!empty($_POST)) {
 
                             <div class="mt-3 mb-3">
                                 <label for="username" class="form-label">ユーザー名</label>
-                                <input type="text" name="username" id="username" class="form-control" value="<? if (!empty($_POST)) echo h($_POST["username"]); ?>">
+                                <input type="text" name="username" id="username" class="form-control" value="<?php if (!empty($_POST)) echo h($_POST["username"]); ?>">
                             </div>
                             <?php if (!$result && $error == "Duplicate") : ?>
                                 <div class="alert alert-danger" role="alert">そのユーザー名は既に存在します</div>
@@ -94,11 +94,11 @@ if (!empty($_POST)) {
 
                             <div class="mb-3">
                                 <label for="truename" class="form-label">本名</label>
-                                <input type="text" name="truename" id="truename" class="form-control" value="<? if (!empty($_POST)) echo h($_POST["truename"]); ?>">
+                                <input type="text" name="truename" id="truename" class="form-control" value="<?php if (!empty($_POST)) echo h($_POST["truename"]); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">メールアドレス</label>
-                                <input type="mail" name="email" id="email" class="form-control" value="<? if (!empty($_POST)) echo h($_POST["email"]); ?>">
+                                <input type="mail" name="email" id="email" class="form-control" value="<?php if (!empty($_POST)) echo h($_POST["email"]); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">パスワード</label>
